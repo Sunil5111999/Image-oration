@@ -65,14 +65,15 @@
       <div class="card" *ngFor="let img of images; trackBy: trackByImageId" [class.editing]="editingImageId === img.id">
         <div class="image-container">
           <img [src]="getImageSrc(img)" [alt]="img.fileName" loading="lazy">
-          <div class="image-overlay">
-            <button class="action-btn download-btn" (click)="downloadImage(img)" title="Download image">
+          <!-- Side action buttons -->
+          <div class="side-actions">
+            <button class="side-btn download-btn" (click)="downloadImage(img)" title="Download image">
               ⬇️
             </button>
-            <button class="action-btn edit-btn" (click)="startEdit(img)" title="Edit image">
+            <button class="side-btn edit-btn" (click)="startEdit(img)" title="Edit image">
               ✏️
             </button>
-            <button class="action-btn delete-btn" (click)="deleteImage(img.id)" title="Delete image">
+            <button class="side-btn delete-btn" (click)="deleteImage(img.id)" title="Delete image">
               🗑️
             </button>
           </div>

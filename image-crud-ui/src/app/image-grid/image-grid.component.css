@@ -242,42 +242,40 @@
   transform: scale(1.05);
 }
 
-.image-overlay {
+/* Side action buttons container */
+.side-actions {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  top: 10px;
+  right: 10px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.card:hover .image-overlay {
+.card:hover .side-actions {
   opacity: 1;
 }
 
-/* Action buttons base style */
-.action-btn {
+/* Side buttons base style */
+.side-btn {
   color: white;
   border: none;
-  padding: 10px 12px;
-  border-radius: 50%;
+  padding: 8px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.action-btn:hover {
+.side-btn:hover {
   transform: scale(1.1);
 }
 
