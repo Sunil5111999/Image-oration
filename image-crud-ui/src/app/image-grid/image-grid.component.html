@@ -1,0 +1,86 @@
+<div class="image-crud-container">
+  <!-- Error Message -->
+  <div *ngIf="error" class="error-message" (click)="clearError()">
+    <span>{{ error }}</span>
+    <button class="close-btn">&times;</button>
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="success-message" (click)="clearSuccess()">
+    <span>{{ successMessage }}</span>
+    <button class="close-btn">&times;</button>
+  </div>
+
+  <!-- Upload Section -->
+  <div class="upload-section">
+    <div
+      class="drop-zone"
+      [class.drag-over]="dragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)">
+
+      <div class="drop-zone-content">
+        <div class="upload-icon">📁</div>
+        <p>Drag and drop images here or</p>
+        <input
+          type="file"
+          id="file-input"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          style="display: none;">
+        <label for="file-input" class="file-input-label">Choose Files</label>
+      </div>
+    </div>
+
+    <div *ngIf="selectedFile" class="selected-file">
+      <span>Selected: {{ selectedFile.name }}</span>
+      <button
+        class="upload-btn"
+        (click)="upload()"
+        [disabled]="isUploading">
+        {{ isUploading ? 'Uploading...' : (editingImageId ? 'Update Image' : 'Upload Image') }}
+      </button>
+      <button
+        *ngIf="editingImageId"
+        class="cancel-btn"
+        (click)="cancelEdit()">
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading images...</p>
+  </div>
+
+  <!-- Images Grid -->
+  <div *ngIf="!isLoading" class="images-section">
+    <h2 *ngIf="images.length > 0">Your Images ({{ images.length }})</h2>
+    <p *ngIf="images.length === 0" class="no-images">No images uploaded yet. Upload your first image above!</p>
+
+    <div class="grid" *ngIf="images.length > 0">
+      <div class="card" *ngFor="let img of images; trackBy: trackByImageId" [class.editing]="editingImageId === img.id">
+        <div class="image-container">
+          <img [src]="getImageSrc(img)" [alt]="img.fileName" loading="lazy">
+          <div class="image-overlay">
+            <button class="action-btn download-btn" (click)="downloadImage(img)" title="Download image">
+              ⬇️
+            </button>
+            <button class="action-btn edit-btn" (click)="startEdit(img)" title="Edit image">
+              ✏️
+            </button>
+            <button class="action-btn delete-btn" (click)="deleteImage(img.id)" title="Delete image">
+              🗑️
+            </button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="filename" [title]="img.fileName">{{ img.fileName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

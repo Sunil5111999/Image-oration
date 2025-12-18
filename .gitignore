@@ -1,0 +1,47 @@
+# Node modules
+node_modules/
+image-crud-ui/node_modules/
+
+# Angular build output
+dist/
+image-crud-ui/dist/
+image-crud-ui/.angular/
+
+# Maven/Java
+Interview-project/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+
+# Compiled output
+*.com
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+
